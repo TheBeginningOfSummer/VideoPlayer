@@ -1,17 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace WindowsPlayer
 {
-    class VlcPlayer
+    public class VlcPlayer
     {
-        private IntPtr libvlc_instance_;
-        private IntPtr libvlc_media_player_;
+        private readonly IntPtr libvlc_instance_;
+        private readonly IntPtr libvlc_media_player_;
         private double duration_;
         public VlcPlayer(string pluginPath)
         {
@@ -113,7 +110,7 @@ namespace WindowsPlayer
 
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
         [SuppressUnmanagedCodeSecurity]
-        public static extern String libvlc_get_version();
+        public static extern string libvlc_get_version();
 
         // 从视频来源(例如Url)构建一个libvlc_meida
         [DllImport("libvlc", CallingConvention = CallingConvention.Cdecl, ExactSpelling = true)]
