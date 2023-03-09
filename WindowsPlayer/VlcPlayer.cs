@@ -48,7 +48,6 @@ namespace WindowsPlayer
             if (libvlc_media_player_ != IntPtr.Zero)
             {
                 LibVlcAPI.libvlc_media_player_play(libvlc_media_player_);
-                //  LibVlcAPI.libvlc_media_player_pause(libvlc_media_player_);
             }
         }
         public void Stop()

@@ -23,49 +23,6 @@ namespace WindowsPlayer
             is_playinig_ = false;
         }
 
-        private void BTN_Open_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                vlc_player_.PlayFile(ofd.FileName);
-                TB_PlayerTrack.SetRange(0, (int)vlc_player_.Duration());
-                TB_PlayerTrack.Value = 0;
-                timer1.Start();
-                is_playinig_ = true;
-            }
-        }
-
-        private void BTN_Stop_Click(object sender, EventArgs e)
-        {
-            if (is_playinig_)
-            {
-                vlc_player_.Stop();
-                TB_PlayerTrack.Value = 0;
-                timer1.Stop();
-                is_playinig_ = false;
-            }
-        }
-
-        private void Timer1_Tick(object sender, EventArgs e)
-        {
-            if (is_playinig_)
-            {
-                if (TB_PlayerTrack.Value == TB_PlayerTrack.Maximum)
-                {
-                    vlc_player_.Stop();
-                    timer1.Stop();
-                }
-                else
-                {
-                    TB_PlayerTrack.Value = TB_PlayerTrack.Value + 1;
-                    LB_VideoTime.Text = string.Format("{0}/{1}",
-                        GetTimeString(TB_PlayerTrack.Value),
-                        GetTimeString(TB_PlayerTrack.Maximum));
-                }
-            }
-        }
-
         private string GetTimeString(int val)
         {
             int hour = val / 3600;
@@ -75,18 +32,80 @@ namespace WindowsPlayer
             return string.Format("{0:00}:{1:00}:{2:00}", hour, minute, second);
         }
 
-        private void TB_PlayerTrack_Scroll(object sender, EventArgs e)
+        private void Timer1_Tick(object sender, EventArgs e)
         {
             if (is_playinig_)
             {
-                vlc_player_.SetPlayTime(TB_PlayerTrack.Value);
-                TB_PlayerTrack.Value = (int)vlc_player_.GetPlayTime();
+                if (LTB_PlayerTrack.L_Value == LTB_PlayerTrack.L_Maximum)
+                {
+                    vlc_player_.Stop();
+                    timer1.Stop();
+                }
+                else
+                {
+                    LTB_PlayerTrack.L_Value++;
+                    LB_VideoTime.Text = $"{GetTimeString(LTB_PlayerTrack.L_Value)}/{GetTimeString(LTB_PlayerTrack.L_Maximum)}";
+                }
+            }
+        }
+
+        private void LTB_PlayerTrack_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (is_playinig_)
+            {
+                vlc_player_.SetPlayTime(LTB_PlayerTrack.L_Value);
+                LTB_PlayerTrack.L_Value = (int)vlc_player_.GetPlayTime();
             }
         }
 
         private void PN_Display_Paint(object sender, PaintEventArgs e)
         {
-
+            //trackBar1.SetRange
         }
+
+        private void TSB_Open_Click(object sender, EventArgs e)
+        {
+            if (OFD_VideoPath.ShowDialog() == DialogResult.OK)
+            {
+                vlc_player_.PlayFile(OFD_VideoPath.FileName);
+                //TB_PlayerTrack.SetRange(0, (int)vlc_player_.Duration());
+                LTB_PlayerTrack.L_Minimum = 0;
+                LTB_PlayerTrack.L_Maximum = (int)vlc_player_.Duration();
+                LTB_PlayerTrack.L_Value = 0;
+                timer1.Start();
+                is_playinig_ = true;
+            }
+        }
+
+        private void BTN_Play_Click(object sender, EventArgs e)
+        {
+            if (is_playinig_) return;
+            if (OFD_VideoPath.FileName == "") return;
+            vlc_player_.Play();
+            timer1.Start();
+            is_playinig_ = true;
+        }
+
+        private void BTN_Pause_Click(object sender, EventArgs e)
+        {
+            if (is_playinig_)
+            {
+                vlc_player_.Pause();
+                timer1.Stop();
+                is_playinig_ = false;
+            }
+        }
+
+        private void BTN_Stop_Click(object sender, EventArgs e)
+        {
+            if (is_playinig_)
+            {
+                vlc_player_.Stop();
+                LTB_PlayerTrack.L_Value = 0;
+                timer1.Stop();
+                is_playinig_ = false;
+            }
+        }
+
     }
 }
