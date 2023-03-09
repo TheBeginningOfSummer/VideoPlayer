@@ -28,19 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
+            PN_VideoDisplay = new Panel();
+            SuspendLayout();
+            // 
+            // PN_VideoDisplay
+            // 
+            PN_VideoDisplay.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            PN_VideoDisplay.BackColor = Color.Black;
+            PN_VideoDisplay.Location = new Point(0, 0);
+            PN_VideoDisplay.Name = "PN_VideoDisplay";
+            PN_VideoDisplay.Size = new Size(801, 404);
+            PN_VideoDisplay.TabIndex = 0;
             // 
             // PlayerForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "PlayerForm";
-            this.Text = "DotNetPlayer";
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(PN_VideoDisplay);
+            Name = "PlayerForm";
+            Text = "DotNetPlayer";
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Panel PN_VideoDisplay;
     }
 }
