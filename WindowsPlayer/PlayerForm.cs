@@ -40,6 +40,8 @@ namespace WindowsPlayer
                 {
                     vlc_player_.Stop();
                     timer1.Stop();
+                    LTB_PlayerTrack.L_Value = 0;
+                    is_playinig_ = false;
                 }
                 else
                 {
@@ -60,7 +62,7 @@ namespace WindowsPlayer
 
         private void PN_Display_Paint(object sender, PaintEventArgs e)
         {
-            //trackBar1.SetRange
+            
         }
 
         private void TSB_Open_Click(object sender, EventArgs e)
@@ -101,8 +103,8 @@ namespace WindowsPlayer
             if (is_playinig_)
             {
                 vlc_player_.Stop();
-                LTB_PlayerTrack.L_Value = 0;
                 timer1.Stop();
+                LTB_PlayerTrack.L_Value = 0;
                 is_playinig_ = false;
             }
         }

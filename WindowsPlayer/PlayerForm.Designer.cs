@@ -79,6 +79,7 @@
             // 
             // timer1
             // 
+            this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
             // LTB_PlayerTrack
@@ -205,6 +206,7 @@
             this.Controls.Add(this.BTN_Stop);
             this.Controls.Add(this.PN_Display);
             this.Name = "PlayerForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WindowsPlayer";
             this.STP_Tool.ResumeLayout(false);
             this.STP_Tool.PerformLayout();
