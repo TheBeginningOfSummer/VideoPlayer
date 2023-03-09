@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsPlayer", "WindowsPlayer\WindowsPlayer.csproj", "{F4C9D81D-0F49-4918-9011-B3FBAC830BA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetPlayer", "DotNetPlayer\DotNetPlayer.csproj", "{940E4F3E-B077-4548-857C-C89449790899}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +17,15 @@ Global
 		{F4C9D81D-0F49-4918-9011-B3FBAC830BA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F4C9D81D-0F49-4918-9011-B3FBAC830BA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F4C9D81D-0F49-4918-9011-B3FBAC830BA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{940E4F3E-B077-4548-857C-C89449790899}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{940E4F3E-B077-4548-857C-C89449790899}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{940E4F3E-B077-4548-857C-C89449790899}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{940E4F3E-B077-4548-857C-C89449790899}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {688129CD-CD8B-4BDF-9E59-3A143EA1BE61}
 	EndGlobalSection
 EndGlobal

@@ -14,7 +14,7 @@ namespace WindowsPlayer
         {
             string plugin_arg = "--plugin-path=" + pluginPath;
             string[] arguments = { "-I", "dummy", "--ignore-config", "--no-video-title", plugin_arg };
-            libvlc_instance_ = LibVlcAPI.libvlc_new(arguments);
+            libvlc_instance_ = LibVlcAPI.Libvlc_new(arguments);
             libvlc_media_player_ = LibVlcAPI.libvlc_media_player_new(libvlc_instance_);
         }
         public void SetRenderWindow(int wndHandle)
@@ -26,7 +26,7 @@ namespace WindowsPlayer
         }
         public void PlayFile(string filePath)
         {
-            IntPtr libvlc_media = LibVlcAPI.libvlc_media_new_path(libvlc_instance_, filePath);
+            IntPtr libvlc_media = LibVlcAPI.Libvlc_media_new_path(libvlc_instance_, filePath);
             if (libvlc_media != IntPtr.Zero)
             {
                 LibVlcAPI.libvlc_media_parse(libvlc_media);
@@ -200,10 +200,12 @@ namespace WindowsPlayer
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 11)]
             public IntPtr[] pointers;
         }
-        public static IntPtr libvlc_new(string[] arguments)
+        public static IntPtr Libvlc_new(string[] arguments)
         {
-            PointerToArrayOfPointerHelper argv = new PointerToArrayOfPointerHelper();
-            argv.pointers = new IntPtr[11];
+            PointerToArrayOfPointerHelper argv = new PointerToArrayOfPointerHelper
+            {
+                pointers = new IntPtr[11]
+            };
             for (int i = 0; i < arguments.Length; i++)
             {
                 argv.pointers[i] = Marshal.StringToHGlobalAnsi(arguments[i]);
@@ -231,7 +233,7 @@ namespace WindowsPlayer
                 }
             }
         }
-        public static IntPtr libvlc_media_new_path(IntPtr libvlc_instance, string path)
+        public static IntPtr Libvlc_media_new_path(IntPtr libvlc_instance, string path)
         {
             IntPtr pMrl = IntPtr.Zero;
             try
@@ -250,7 +252,7 @@ namespace WindowsPlayer
                 }
             }
         }
-        public static IntPtr libvlc_media_new_location(IntPtr libvlc_instance, string path)
+        public static IntPtr Libvlc_media_new_location(IntPtr libvlc_instance, string path)
         {
             IntPtr pMrl = IntPtr.Zero;
             try

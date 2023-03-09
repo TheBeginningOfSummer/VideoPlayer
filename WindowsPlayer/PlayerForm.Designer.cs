@@ -49,10 +49,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PN_Display.BackColor = System.Drawing.Color.Black;
-            this.PN_Display.Location = new System.Drawing.Point(0, 50);
+            this.PN_Display.Location = new System.Drawing.Point(1, 50);
             this.PN_Display.Margin = new System.Windows.Forms.Padding(0);
             this.PN_Display.Name = "PN_Display";
-            this.PN_Display.Size = new System.Drawing.Size(654, 350);
+            this.PN_Display.Size = new System.Drawing.Size(653, 350);
             this.PN_Display.TabIndex = 0;
             this.PN_Display.Paint += new System.Windows.Forms.PaintEventHandler(this.PN_Display_Paint);
             // 
@@ -171,6 +171,7 @@
             // 
             // BTN_Play
             // 
+            this.BTN_Play.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BTN_Play.Location = new System.Drawing.Point(7, 420);
             this.BTN_Play.Name = "BTN_Play";
             this.BTN_Play.Size = new System.Drawing.Size(60, 23);
@@ -181,6 +182,7 @@
             // 
             // BTN_Pause
             // 
+            this.BTN_Pause.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BTN_Pause.Location = new System.Drawing.Point(73, 420);
             this.BTN_Pause.Name = "BTN_Pause";
             this.BTN_Pause.Size = new System.Drawing.Size(60, 23);
