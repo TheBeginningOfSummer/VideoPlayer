@@ -13,17 +13,18 @@ namespace DotNetPlayer
             InitializeComponent();
             Core.Initialize();
             libVLC = new LibVLC();
-            mediaPlayer = new MediaPlayer(libVLC);
-            mediaPlayer.Hwnd = PN_VideoDisplay.Handle;
+            mediaPlayer = new MediaPlayer(libVLC) { Hwnd = PN_VideoDisplay.Handle };
 
             //Media video = new Media(libVLC, new Uri("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"));
-            Media video = new Media(libVLC, "AMVÕ½³¡Ô­ µ´Ñú.flv");
+            Media video = new(libVLC, new Uri("rtsp://127.0.0.1:8554/test"));
             mediaPlayer.Play(video);
             video.Dispose();
 
         }
 
+        private void TSB_Set_Click(object sender, EventArgs e)
+        {
 
-
+        }
     }
 }
